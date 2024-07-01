@@ -56,12 +56,18 @@
   const password = ref('');
   
   const register = () => {
-    // Tutaj można dodać logikę rejestracji, np. wysłanie danych do serwera
-    console.log('Registering with username:', username.value, ', email:', email.value, 'and password:', password.value);
-    
-    // Przekierowanie na stronę główną po zarejestrowaniu
-    router.push('/');
-  }
+    // Sprawdź, czy użytkownik już istnieje w localStorage
+    if (localStorage.getItem(username.value)) {
+      alert('Użytkownik już istnieje');
+      return;
+    }
+  
+    // Zapisz dane do localStorage
+    localStorage.setItem(username.value, JSON.stringify({ email: email.value, password: password.value }));
+  
+    // Przekierowanie na stronę logowania po zarejestrowaniu
+    router.push('/login');
+  };
   </script>
   
   <style scoped>

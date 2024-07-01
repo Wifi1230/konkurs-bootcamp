@@ -49,16 +49,17 @@ const username = ref('');
 const password = ref('');
 
 const login = () => {
-  // Symulacja logowania - tutaj normalnie dane byłyby przesyłane do serwera i sprawdzane
-  // Zakładamy, że login i hasło to "admin" i "password"
-  if (username.value === 'admin' && password.value === 'password') {
+  // Pobierz dane użytkownika z localStorage
+  const userData = JSON.parse(localStorage.getItem(username.value));
+
+  // Sprawdź poprawność danych logowania
+  if (userData && userData.password === password.value) {
     // Przekierowanie na stronę główną po zalogowaniu
     router.push('/');
   } else {
     alert('Invalid username or password');
-    // Można dodać dodatkową logikę, np. wyświetlenie komunikatu o błędnych danych logowania
   }
-}
+};
 </script>
 
 <style scoped>
