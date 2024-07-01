@@ -11,7 +11,7 @@
     <h1 class="text-3xl font-semibold text-white mt-8">Log in</h1>
     
     <!-- Formularz logowania -->
-    <div class="max-w-md w-full mx-auto p-8 bg-gray-700 border border-gray-900 rounded-lg shadow-lg">
+    <div class="max-w-md w-full mx-auto p-8 bg-gray-700 border border-gray-900 rounded-lg shadow-lg mt-8">
       <form @submit.prevent="login" class="space-y-4">
         <div>
           <label for="username" class="block text-sm font-medium text-white">Username</label>
@@ -30,6 +30,11 @@
           Log in
         </button>
       </form>
+
+      <!-- Link do rejestracji -->
+      <div class="text-sm text-gray-400 mt-2 text-center">
+        Nie masz konta? <router-link to="/rejestracja" class="underline hover:text-gray-300">Zarejestruj się</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -48,7 +53,7 @@ const login = () => {
   // Zakładamy, że login i hasło to "admin" i "password"
   if (username.value === 'admin' && password.value === 'password') {
     // Przekierowanie na stronę główną po zalogowaniu
-    router.push('/'); // Możesz ustawić inną ścieżkę, jeśli strona główna ma inny adres
+    router.push('/');
   } else {
     alert('Invalid username or password');
     // Można dodać dodatkową logikę, np. wyświetlenie komunikatu o błędnych danych logowania
